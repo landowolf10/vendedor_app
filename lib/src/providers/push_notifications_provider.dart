@@ -17,6 +17,8 @@ class PushNotificatinProvider {
     _firebaseMessaging.getToken().then((token) {
       firebaseToken = token;
 
+      print("Hola");
+
       print("==== FCM token ====");
       print(firebaseToken);
 

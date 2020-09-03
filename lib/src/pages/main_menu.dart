@@ -7,13 +7,15 @@ class Menu extends StatefulWidget {
   MenuState createState() => new MenuState();
 }
 
-@override
-initState() {
-  final pushProvider = new PushNotificatinProvider();
-  pushProvider.initNotifications();
-}
-
 class MenuState extends State<Menu> {
+  @override
+  void initState() {
+    super.initState();
+
+    final pushProvider = new PushNotificatinProvider();
+    pushProvider.initNotifications();
+  }
+
   @override
   Widget build(BuildContext context) {
     /*final logo = Hero(
