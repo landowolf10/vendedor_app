@@ -13,6 +13,7 @@ class PushNotificatinProvider {
 
   initNotifications() {
     _firebaseMessaging.requestNotificationPermissions();
+    _firebaseMessaging.subscribeToTopic("restaurant_topic");
 
     _firebaseMessaging.getToken().then((token) {
       firebaseToken = token;
