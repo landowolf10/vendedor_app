@@ -52,6 +52,10 @@ class PushNotificatinProvider
   {
     print("===== onMessage =====");
     print('message: $message');
+
+    final argument = message['data']['comida'];
+
+    print(argument);
   }
 
     Future<dynamic> onLaunch(Map<String, dynamic> message) async
