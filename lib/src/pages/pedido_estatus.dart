@@ -1,27 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:vendedor_app/src/pages/pedido_estatus.dart';
-import 'package:vendedor_app/src/providers/push_notifications_provider.dart';
-import 'package:vendedor_app/main.dart';
+List<String> precioProducto = new List<String>();
 
-class Menu extends StatefulWidget {
+class PedidoRealizado extends StatefulWidget {
   @override
-  MenuState createState() => new MenuState();
+  PedidoRealizadoState createState() => new PedidoRealizadoState();
 }
 
-class MenuState extends State<Menu> {
-  @override
+class PedidoRealizadoState extends State<PedidoRealizado> {
+    @override
   void initState() {
     super.initState();
-
-    final pushProvider = new PushNotificatinProvider();
-    pushProvider.initNotifications();
-
-    pushProvider.mensajesStream.listen((data) {
-      print("Argumento: $data");
-      //navigatorKey.currentState.pushReplacement(MaterialPageRoute(builder: (BuildContext ctx) => PedidoRealizado()), arguments: );
-      navigatorKey.currentState.pushNamed('pedido_realizado', arguments: data);
-    });
   }
 
   @override
@@ -30,6 +19,9 @@ class MenuState extends State<Menu> {
       tag: "hero",
       child: Image.asset("img/botanaxLogo.png"),
     );*/
+
+    final arg = ModalRoute.of(context).settings.arguments;
+
     return Container(
       color: Colors.white,
       child: ListView(
@@ -37,7 +29,7 @@ class MenuState extends State<Menu> {
           Center(
             child: Column(
               children: <Widget>[
-                SizedBox(height: 150),
+                Text(arg),
                 ButtonTheme(
                   minWidth: 200.0,
                   height: 44.0,
@@ -47,10 +39,12 @@ class MenuState extends State<Menu> {
                       ),
                       color: Colors.red,
                       child: Text(
-                        'Ir al carrito',
+                        'Productos pedidos',
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
-                      onPressed: () {}),
+                      onPressed: () {
+
+                      }),
                 )
               ],
             ),
