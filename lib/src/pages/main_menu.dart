@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:vendedor_app/src/pages/pedido_estatus.dart';
 import 'package:vendedor_app/src/providers/push_notifications_provider.dart';
 import 'package:vendedor_app/main.dart';
 
@@ -18,8 +17,6 @@ class MenuState extends State<Menu> {
     pushProvider.initNotifications();
 
     pushProvider.mensajesStream.listen((data) {
-      print("Argumento: $data");
-      //navigatorKey.currentState.pushReplacement(MaterialPageRoute(builder: (BuildContext ctx) => PedidoRealizado()), arguments: );
       navigatorKey.currentState.pushNamed('pedido_realizado', arguments: data);
     });
   }
