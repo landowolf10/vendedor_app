@@ -1,9 +1,5 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-import 'package:vendedor_app/src/pages/pedido_estatus.dart';
 
 String firebaseToken;
 String clientData,
@@ -60,15 +56,7 @@ class PushNotificatinProvider {
     street = message['data']['calle'];
     streetNumber = message['data']['numero'];
 
-    print(clientData);
-
-    //dataList.add(clientData);
-    //dataList.add(foodData);
-
-    //_mensajesStreamController.sink.add(dataList.toString());
-
     _mensajesStreamController.sink.add(clientData);
-    _mensajesStreamController.sink.add(foodData);
   }
 
   Future<dynamic> onLaunch(Map<String, dynamic> message) async {
@@ -83,12 +71,22 @@ class PushNotificatinProvider {
 
   Future<dynamic> onResume(Map<String, dynamic> message) async {
     print("===== onResume =====");
-    print('message: $message');
+    /*print('message: $message');
 
     final argument = message['data']['comida'];
     print("DATA: " + argument);
 
-    _mensajesStreamController.sink.add(argument);
+    _mensajesStreamController.sink.add(argument);*/
+
+    clientData = message['data']['cliente'];
+    foodData = message['data']['pedido'];
+    quantityPerProd = message['data']['cantidad'];
+    phoneNumber = message['data']['telefono'];
+    colony = message['data']['colonia'];
+    street = message['data']['calle'];
+    streetNumber = message['data']['numero'];
+
+    _mensajesStreamController.sink.add(clientData);
   }
 
   dispose() {
